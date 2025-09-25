@@ -1,7 +1,11 @@
 public class Main {
     public static void main(String[] args) {
-    Channel ch = ChannelFactory.create();
+        ChannelFactory factory = new UDPChannelFactory();
+        Channel ch = factory.create();
+        ch.getMessage();
 
-    ch.getMessage();
+        ChannelFactory factory2 = new TCPChannelFactory();
+        Channel ch2 = factory2.create();
+        ch2.getMessage();
     }
 }

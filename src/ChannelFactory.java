@@ -1,5 +1,3 @@
-public class ChannelFactory {
-    public static Channel create() {
-        return new TCPChannel();
-    }
+public abstract class ChannelFactory {
+    public abstract Channel create();
 }
