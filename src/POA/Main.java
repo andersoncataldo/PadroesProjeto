@@ -4,9 +4,8 @@ public class Main {
 
     public static void main(String[] args) {
         System.out.println("=== SISTEMA BANCÁRIO COM POA EM JAVA ===");
-        System.out.println("(Usando Proxy)\n");
+        System.out.println("(Utilizando Princípio Proxy)\n");
 
-        // Criando contas COM proxy (aspectos aplicados)
         ContaBancariaInterface conta1 = AspectFactory.criarProxy(
                 new ContaBancaria("001", "João Silva", 1000.0),
                 ContaBancariaInterface.class
@@ -18,23 +17,19 @@ public class Main {
         );
 
         try {
-            // Operação 1: Depósito
             System.out.println("\n>>> OPERAÇÃO 1: DEPÓSITO <<<");
             conta1.depositar(500.0);
             System.out.println("Novo saldo: R$ " + conta1.getSaldo());
 
-            // Operação 2: Saque
             System.out.println("\n\n>>> OPERAÇÃO 2: SAQUE <<<");
             conta1.sacar(300.0);
             System.out.println("Novo saldo: R$ " + conta1.getSaldo());
 
-            // Operação 3: Transferência
             System.out.println("\n\n>>> OPERAÇÃO 3: TRANSFERÊNCIA <<<");
             conta1.transferir(conta2, 200.0);
             System.out.println("Saldo conta1: R$ " + conta1.getSaldo());
             System.out.println("Saldo conta2: R$ " + conta2.getSaldo());
 
-            // Operação 4: Tentativa de saque com saldo insuficiente
             System.out.println("\n\n>>> OPERAÇÃO 4: TENTATIVA DE SAQUE INVÁLIDO <<<");
             conta2.sacar(10000.0);
 
@@ -46,7 +41,6 @@ public class Main {
         System.out.println("Conta 1 - " + conta1.getTitular() + ": R$ " + conta1.getSaldo());
         System.out.println("Conta 2 - " + conta2.getTitular() + ": R$ " + conta2.getSaldo());
 
-        // Demonstração: objeto sem proxy (sem aspectos)
         System.out.println("\n\n=== DEMONSTRAÇÃO: SEM ASPECTOS ===");
         ContaBancaria contaSemProxy = new ContaBancaria("003", "Pedro Costa", 1000.0);
         System.out.println("Depositando 100 sem aspectos...");
